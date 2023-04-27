@@ -15,7 +15,7 @@ class Methods : MonoBehaviour
         {
             myAbs = -a;
         }
-        else 
+        else
         {
             myAbs = a;
         }
@@ -25,7 +25,7 @@ class Methods : MonoBehaviour
         int myAbs4 = MyAbs(555);
 
         float power = Mathf.Pow(23.5f, 4.5f);
-        float power2 = MyPow(23, (int) 4.5f);
+        float power2 = MyPow(23, (int)4.5f);
 
         float sign = Mathf.Sign(-254);
 
@@ -47,11 +47,11 @@ class Methods : MonoBehaviour
 
         f = Mathf.Pow(f, 5);
         f = Mathf.Sqrt(f);
-        f = Mathf.Pow(f, 1/3f);  // Köbgyök
+        f = Mathf.Pow(f, 1 / 3f);  // Köbgyök
 
     }
 
-    int MyAbs(int num) 
+    int MyAbs(int num)
     {
         int myAbs;
         if (num < 0)
@@ -65,7 +65,7 @@ class Methods : MonoBehaviour
         return myAbs;
     }
 
-    float MyPow(float baseNumber, int exponent) 
+    float MyPow(float baseNumber, int exponent)
     {
         float result = 1;
         for (int i = 0; i < exponent; i++)
@@ -84,19 +84,80 @@ class Methods : MonoBehaviour
         else
         {
             return 1;
-        }    
+        }
     }
 
-    void MultiplicationTable(int number) 
+    void MultiplicationTable(int number)
     {
         for (int i = 1; i <= number; i++)
         {
             for (int j = 1; j <= number; j++)
             {
                 string s = $"{j} * {i} = {i * j}";
-                Debug.Log(s);                
+                Debug.Log(s);
             }
         }
     }
 
+    float Floor(float n)
+    {
+        float r = n % 1;
+        return n - r;
+    }
+
+    int FloorToInt(float n)
+    {
+        return (int)n;
+    }
+
+    float Ceil(float n)
+    {
+        float r = n % 1;
+        if (r == 0)
+        {
+            return n;
+        }
+
+        return n - r + 1;
+    }
+
+    float Round(float n)
+    {
+        float r = n % 1;
+        if (r < 0.5)
+        {
+            return Floor(n);
+        }
+        else
+        {
+            return Ceil(n);
+        }
+    }
+
+    bool IsPrime(int n)
+    {
+        if (n % 2 == 0)
+            return false;
+
+        for (int i = 3; i < n / 2; i += 2)
+        {
+            if (n % i == 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    float Min(float a, float b)
+    {
+        //if (a < b)
+        //    return a;
+        //else
+        //    return b;
+
+        return a < b ? a : b;
+    }
+
+    float Max(float a, float b) => a > b ? a : b;
 }
