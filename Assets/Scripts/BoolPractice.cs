@@ -1,48 +1,48 @@
-using UnityEngine;
+//using UnityEngine;
 
-public class BoolPractice : MonoBehaviour
-{
-    void Start()
-    {
-        bool b1 = true;
-        bool b2 = false;
+//public class BoolPractice : MonoBehaviour
+//{
+//    void Start()
+//    {
+//        bool b1 = true;
+//        bool b2 = false;
 
-        b1 = false;
+//        b1 = false;
 
-        int i1 = 33, i2 = 33;
+//        int i1 = 33, i2 = 33;
 
-        bool intsAreEqual = i1 == i2;     // True
-        bool i1IsHigherThanI2 = i1 > i2;  // False
-        bool i1IsLowerThanI2 = i1 < i2;   // False
+//        bool intsAreEqual = i1 == i2;     // True
+//        bool i1IsHigherThanI2 = i1 > i2;  // False
+//        bool i1IsLowerThanI2 = i1 < i2;   // False
 
-        bool i1IsHigherOrEqualThanI2 = i1 >= i2;  // True
-        bool i1IsLowerOrEqualThanI2 = i1 <= i2;   // True
+//        bool i1IsHigherOrEqualThanI2 = i1 >= i2;  // True
+//        bool i1IsLowerOrEqualThanI2 = i1 <= i2;   // True
 
-        bool intsAreNotEqual = i1 != i2;     // False
+//        bool intsAreNotEqual = i1 != i2;     // False
 
-        bool stringsAreEqual = "aaaa" == "AAAA";       // False
-        bool stringsAreNotEqual = "aaaa" != "AAAA";    // True
+//        bool stringsAreEqual = "aaaa" == "AAAA";       // False
+//        bool stringsAreNotEqual = "aaaa" != "AAAA";    // True
 
-        // --------------------------------------
+//        // --------------------------------------
 
-        int ammo = 50;
-        bool isAlive = true;
+//        int ammo = 50;
+//        bool isAlive = true;
 
-        bool haveAmmo = ammo > 0;
+//        bool haveAmmo = ammo > 0;
 
-        bool canShoot = isAlive && haveAmmo;
+//        bool canShoot = isAlive && haveAmmo;
 
-        float height = 12;
-        bool canAirJump = false;
+//        float height = 12;
+//        bool canAirJump = false;
 
-        bool canJump = canAirJump || height == 0;   // false
+//        bool canJump = canAirJump || height == 0;   // false
 
-        bool isInAir = height > 0;
-        bool isGrounded = !isInAir;
+//        bool isInAir = height > 0;
+//        bool isGrounded = !isInAir;
 
-        canJump = canAirJump || !isInAir;   // false
+//        canJump = canAirJump || !isInAir;   // false
 
 
-        bool b3 = b1 ^ b2;  // XOR = Kizáró vagy
-    }
-}
+//        bool b3 = b1 ^ b2;  // XOR = Kizáró vagy
+//    }
+//}
