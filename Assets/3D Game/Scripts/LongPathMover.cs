@@ -4,6 +4,15 @@ public class LongPathMover : MonoBehaviour
 {
     [SerializeField] Vector3[] points;
     [SerializeField] float speed = 2;
+    [SerializeField] LineRenderer lineRenderer;
+
+    void OnValidate()
+    {
+        if (lineRenderer == null)
+            lineRenderer = GetComponent<LineRenderer>();
+
+        UpdateLineRenderer();
+    }
 
     int targetIndex;
 
@@ -18,13 +27,24 @@ public class LongPathMover : MonoBehaviour
         Vector3 target = points[targetIndex];
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        if (transform.position == target) 
+        if (transform.position == target)
         {
             targetIndex++;
 
             if (targetIndex >= points.Length)
                 targetIndex = 0;
-        }        
+        }
+
+        UpdateLineRenderer();
+    }
+
+    void UpdateLineRenderer()
+    {
+        if (lineRenderer == null)
+            return;
+                
+        lineRenderer.positionCount = points.Length;
+        lineRenderer.SetPositions(points);
     }
 
     void OnDrawGizmos()

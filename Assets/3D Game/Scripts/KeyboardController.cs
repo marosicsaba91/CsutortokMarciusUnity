@@ -18,7 +18,7 @@ class KeyboardController : MonoBehaviour
 
     void Update()
     {
-        if (damageable != null && !damageable.IsAlive())
+        if (damageable != null && !damageable.IsAlive)
             return;
 
         Vector3 direction = GetInputDirection();
@@ -80,5 +80,4 @@ class KeyboardController : MonoBehaviour
         d.Normalize();
         return d;
     }
-
 }

@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public void RestartGame(string palyer) 
+    public void RestartGame(string sceneName) 
     {
-        Debug.Log("Restart");
+        SceneManager.LoadScene(sceneName);
     }
 }

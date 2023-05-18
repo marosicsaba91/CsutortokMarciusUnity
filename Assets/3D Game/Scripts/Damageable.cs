@@ -15,15 +15,26 @@ class Damageable : MonoBehaviour
 
     int health;
 
+    public int HealthLost 
+    {
+        get => maxHP - health;
+        set => health = maxHP - value;
+    }
+
     void Start()
     {
         health = maxHP;
         UpdateUI();
+
+        int lost = HealthLost;
+        HealthLost = 12;
+
+        Vector3 pos = transform.position;
     }
 
     public int GetHealth() => health;
 
-    public bool IsAlive() => health > 0;
+    public bool IsAlive => health > 0;
 
     public void Damage(int n)
     {
@@ -42,8 +53,6 @@ class Damageable : MonoBehaviour
         healthText.color = c;
         healthText.text = health.ToString();
 
-        isDeadObject.SetActive(!IsAlive());
+        isDeadObject.SetActive(!IsAlive);
     }
-
-
 }
