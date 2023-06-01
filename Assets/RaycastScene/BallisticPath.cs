@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallisticPath : MonoBehaviour
@@ -16,7 +17,7 @@ public class BallisticPath : MonoBehaviour
             lineRenderer = GetComponent<LineRenderer>();
     }
 
-    void Update()
+    void LateUpdate()
     {
         List<Vector3> points = new List<Vector3>();
 

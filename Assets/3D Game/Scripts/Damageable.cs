@@ -1,19 +1,20 @@
-using JetBrains.Annotations;
+
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 class Damageable : MonoBehaviour
 {
     [SerializeField] int maxHP = 10;
     [SerializeField] TMP_Text healthText;
+    [SerializeField] float invincibilityFrames = 1;
+    [SerializeField] float flickTime = 0.1f;
 
-    //[SerializeField] Color minHPColor = Color.red;
-    //[SerializeField] Color maxHPColor = Color.green;
     [SerializeField] Gradient healthColor;
     [SerializeField] GameObject isDeadObject;
 
     int health;
+    bool isInvincible = false;
 
     public int HealthLost 
     {
@@ -26,9 +27,6 @@ class Damageable : MonoBehaviour
         health = maxHP;
         UpdateUI();
 
-        int lost = HealthLost;
-        HealthLost = 12;
-
         Vector3 pos = transform.position;
     }
 
@@ -38,10 +36,42 @@ class Damageable : MonoBehaviour
 
     public void Damage(int n)
     {
+        if (isInvincible)
+            return;
+
         health -= n;
         health = Mathf.Max(health, 0);
 
         UpdateUI();
+        StartCoroutine(InvincibilityCoroutine());
+    }
+
+    IEnumerator InvincibilityCoroutine()
+    {
+        isInvincible = true;
+        // yield return new WaitForSeconds(invincibilityFrames);
+
+        float time = 0;
+        bool visible = true;
+        while (time < invincibilityFrames)
+        {
+            visible = !visible;
+
+            EnableAllRenderer(visible);
+            yield return new WaitForSeconds(flickTime);
+            time += flickTime;
+        }
+
+        EnableAllRenderer(true);
+        isInvincible = false;
+    }
+
+    void EnableAllRenderer(bool enabled)
+    {
+        foreach (var renderer in GetComponentsInChildren<Renderer>())
+        {
+            renderer.enabled = enabled;
+        }
     }
 
     void UpdateUI()

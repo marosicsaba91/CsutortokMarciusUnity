@@ -7,6 +7,7 @@ class KeyboardController : MonoBehaviour
     [SerializeField] Transform cameraTransform;
 
     [SerializeField] Damageable damageable;
+    [SerializeField] Rigidbody rigidBody;
 
 
     void OnValidate()
@@ -23,17 +24,16 @@ class KeyboardController : MonoBehaviour
 
         Vector3 direction = GetInputDirection();
 
-
         if (direction != Vector3.zero)
         {
             Vector3 velocity = direction * speed;
-            transform.position += velocity * Time.deltaTime;
+            rigidBody.MovePosition(rigidBody.position + velocity * Time.deltaTime);
 
             Quaternion targetRot = Quaternion.LookRotation(direction);
             Quaternion currentRot = transform.rotation;
 
             float step = angularSpeed * Time.deltaTime;
-            transform.rotation = Quaternion.RotateTowards(currentRot, targetRot, step);
+            rigidBody.rotation = Quaternion.RotateTowards(currentRot, targetRot, step);
 
             // transform.rotation = Quaternion.LookRotation(direction);
 
