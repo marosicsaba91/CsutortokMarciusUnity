@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 class Damageable : MonoBehaviour
 {
@@ -9,6 +10,8 @@ class Damageable : MonoBehaviour
     [SerializeField] TMP_Text healthText;
     [SerializeField] float invincibilityFrames = 1;
     [SerializeField] float flickTime = 0.1f;
+
+    [SerializeField] RectTransform healthBar;
 
     [SerializeField] Gradient healthColor;
     [SerializeField] GameObject isDeadObject;
@@ -82,6 +85,13 @@ class Damageable : MonoBehaviour
 
         healthText.color = c;
         healthText.text = health.ToString();
+
+        Vector2 anchorMax = healthBar.anchorMax;
+        anchorMax.x = t;
+        healthBar.anchorMax = anchorMax;
+        Image image = healthBar.GetComponent<Image>();
+        image.color = c;
+
 
         isDeadObject.SetActive(!IsAlive);
     }

@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserPointer : MonoBehaviour
 {
-    [SerializeField] Transform[] points;
+    [SerializeField] float distance;
+    [SerializeField] GameObject pointPrototype;
+
+    List<Transform> points = new List<Transform>();
 
     void Update()
     {
@@ -11,18 +15,40 @@ public class LaserPointer : MonoBehaviour
 
         bool isHit = Physics.Raycast(ray, out RaycastHit hit);
 
-        for (int i = 0; i < points.Length; i++)
+        if (!isHit)
+        {
+            for (int i = 0; i < points.Count; i++)
+            {
+                points[i].gameObject.SetActive(false);
+            }
+            return;
+        }
+
+        int pointCount = Mathf.CeilToInt((hit.point - selfPoint).magnitude / distance);
+        while (points.Count < pointCount) 
+        {
+            GameObject newPoint = Instantiate(pointPrototype, transform);
+            // newPoint.transform.parent = transform;
+
+            points.Add(newPoint.transform);
+        }
+
+        Vector3 distanceVector = ray.direction.normalized * distance;
+        Vector3 currentPoint = selfPoint;
+        for (int i = 0; i < pointCount; i++)
         {
             points[i].gameObject.SetActive(isHit);
             if (isHit) 
-            {
-                float t = (float)i / (points.Length - 1);
-                Vector3 p = Vector3.Lerp(selfPoint, hit.point, t);
-
-                points[i].position = p;
+            { 
+                points[i].position = currentPoint;
+                currentPoint += distanceVector;
             }
         }
 
+        for (int i = pointCount; i < points.Count; i++)
+        {
+            points[i].gameObject.SetActive(false);
+        }
     }
 
 }
