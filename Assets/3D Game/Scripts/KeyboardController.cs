@@ -8,12 +8,14 @@ class KeyboardController : MonoBehaviour
 
     [SerializeField] Damageable damageable;
     [SerializeField] Rigidbody rigidBody;
-
+    [SerializeField] Animator animator;
 
     void OnValidate()
     {
         if(damageable == null)
             damageable = GetComponent<Damageable>();
+        if (animator == null)
+            animator = GetComponent<Animator>();
     }
 
 
@@ -24,7 +26,10 @@ class KeyboardController : MonoBehaviour
 
         Vector3 direction = GetInputDirection();
 
-        if (direction != Vector3.zero)
+        bool isMoving = direction != Vector3.zero;
+        animator.SetBool("IsWalking", isMoving);
+
+        if (isMoving)
         {
             Vector3 velocity = direction * speed;
             rigidBody.MovePosition(rigidBody.position + velocity * Time.deltaTime);

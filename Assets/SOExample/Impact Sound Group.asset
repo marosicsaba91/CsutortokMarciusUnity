@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26525c8fd165f894cb78b3ba4e39d18e, type: 3}
+  m_Name: Impact Sound Group
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 3663c7da7c787e249be9c4ede4f35cfc, type: 3}
+  - {fileID: 8300000, guid: eb8f6d6c569f49d4eb3b877e0095b5e9, type: 3}
+  - {fileID: 8300000, guid: 382d945463c2cda4ba4fbd3d7f22a1ad, type: 3}
+  - {fileID: 8300000, guid: 651414664492f7f4fb93f20556e3daa3, type: 3}
+  - {fileID: 8300000, guid: 2e9d23b38a18de441b5578bbdcfc5def, type: 3}
+  - {fileID: 8300000, guid: 38b158f9e8fdfc24d811e41e013290e6, type: 3}
+  - {fileID: 8300000, guid: 178afea4e3678674ba65bde91edc6474, type: 3}

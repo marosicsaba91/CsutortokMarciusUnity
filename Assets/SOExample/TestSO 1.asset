@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd64d38b5792f94b8065a94ff16e2ad, type: 3}
+  m_Name: TestSO 1
+  m_EditorClassIdentifier: 
+  testVector: {x: 1.31, y: 1.42, z: 0}
+  testList:
+  - cvbxfgn
+  - bcvbxcvb
+  - vcbxcbcx
+  testGameObject: {fileID: 3560029637446516259, guid: 32f34f624b729ca4aa769b77cf4662ac, type: 3}
+  so1: {fileID: 11400000}
+  so2: {fileID: 11400000, guid: 18aa7182aa2c78848b5b46f1ec35f652, type: 2}
